@@ -56,4 +56,8 @@ public class SiteService {
         Collections.reverse(sites);
         return sites;
     }
+
+    public List<Site> getAll() {
+        return siteRepository.findAll();
+    }
 }

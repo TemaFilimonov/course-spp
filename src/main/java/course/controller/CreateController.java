@@ -25,21 +25,8 @@ public class CreateController {
     @Autowired
     private SiteService siteService;
 
-    @Autowired
-    private ElasticSiteRepository elasticSiteRepository;
-
     @RequestMapping(value = "save/site", method = RequestMethod.POST)
     public String createSite(HttpSession httpSession, @RequestBody Site site) {
         return siteService.saveSite(httpSession, site);
-    }
-
-    @RequestMapping(value = "test", method = RequestMethod.GET)
-    public String asfasfasf(HttpSession httpSession) {
-        elasticSiteRepository.save(new ElasticSite("1",
-                "Test",
-                "asfasfas",
-                "asfasfasf",
-                "asfasfasf"));
-        return "ok";
     }
 }
