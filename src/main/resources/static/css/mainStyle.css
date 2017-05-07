@@ -1,0 +1,43 @@
+.fb{
+	background-image: url('../image/connect-with-facebook.png');
+	background-size: cover;
+	width: 150px;
+	height: 35px;
+	margin-left: 2.5%;
+	border-radius: 5px;
+	border: hidden;
+}
+.tw{
+	background-image: url('../image/follow_us_in_twitter.gif');
+	background-size: cover;
+	width: 150px;
+	margin-left: 2.5%;
+	height: 35px;
+	border-radius: 5px;
+	border: hidden;
+}
+.dropdown-menu{
+	border-radius: 10px;
+}
+.userinfo{
+	margin-left: 5%;
+}
+.round {
+	border-radius: 100px; /* Радиус скругления */
+}
+.responsive-video {
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 60px; overflow: hidden;
+}
+
+
+.responsive-video iframe,
+.responsive-video object,
+.responsive-video embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

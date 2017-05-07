@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:ng-src="http://www.w3.org/1999/xhtml">
+<html>
+<head>
+    <title>User profile</title>
+    <link rel="stylesheet" href="css/mainStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="//code.angularjs.org/1.2.20/angular-sanitize.min.js"></script>
+</head>
+
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<body ng-app="siteCreate">
+
+<div th:switch="${role}">
+            <span th:case="'user'">
+		        <div th:replace="fragments/header ::'userHeader'"></div>
+            </span>
+    <span th:case="*">
+		        <div th:replace="fragments/header ::'unsignedHeader'"></div>
+            </span>
+</div>
+
+<div class="container" ng-controller="creationCtrl">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default" >
+                <div class="panel-heading"><h4>New site</h4></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form>
+                            <div class="form-group">
+                                <label for="sitename">Site title</label>
+                                <input type="text" class="form-control" id="sitename" placeholder="Enter site title"
+                                       maxlength="255" ng-model="src.name">
+                            </div>
+                            <div class="form-group">
+                                <label for="tags">Tags</label>
+                                <input type="text" class="form-control" id="tags" placeholder="Enter tags"
+                                       maxlength="255" ng-model="src.tags">
+                            </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer text-right">
+                    <button class="btn btn-success" ng-click="saveSite()">Save site</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/siteCreate.js"></script>
+</body>
+</html>

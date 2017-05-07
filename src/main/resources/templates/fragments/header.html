@@ -1,0 +1,73 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+    <link rel="stylesheet" href="css/mainStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container" th:fragment="unsignedHeader">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+				<div class="navbar-header">
+				 	<a href="http://localhost:8080/" class="navbar-brand">Site creator</a>
+				</div>
+                <div class="collapse navbar-collapse">
+                    <form class="navbar-form navbar-left">
+						
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log In <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <form action="/connect/twitter" method="POST" style="margin-bottom: -5px">
+                                    <p><button class="tw" type="submit"></button></p>
+                                </form>
+                                <form action="/connect/facebook" method="POST" style="margin-bottom: -9px">
+                                    <p><button class="fb" type="submit"></button></p>
+                                </form>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div class="container" th:fragment="userHeader">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+				<div class="navbar-header">
+				 	<a href="http://localhost:8080/" class="navbar-brand">Site creator</a>
+				</div>
+                <div class="collapse navbar-collapse">
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li class="userinfo"><img th:src="${img}" height="35" width="35" class="round"/><p th:text="${name}"></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a th:href="@{'profile?id='+${id}}">Profile</a></li>
+                                <li><a th:href="@{'favorite?id='+${id}}">Favorite</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/disconnect">Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+
+</body>
+</html>
