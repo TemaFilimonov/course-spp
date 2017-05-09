@@ -1,21 +1,26 @@
 package course.domain;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
-/**
- * Created by Nox on 05.10.2016.
- */
+
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Site {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID")
     private long id;
 
-    public Site(){}
     public Site(String name, long ownerId, String createDate, String editDate, String tags){
         this.name = name;
         this.ownerId = ownerId;
@@ -62,62 +67,5 @@ public class Site {
 
     @Column(name = "tags")
     private String tags;
-
-
-    public String getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
-    }
-
-    public String getEditDate() {
-        return editDate;
-    }
-
-    public void setEditDate(String editDate) {
-        this.editDate = editDate;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public String getTags() {
-        return tags;
-    }
-
-    public void setTags(String tags) {
-        this.tags = tags;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public long getOwnerId() {
-        return ownerId;
-    }
-
-    public void setOwnerId(long ownerId) {
-        this.ownerId = ownerId;
-    }
 }
 

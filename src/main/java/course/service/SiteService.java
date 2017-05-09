@@ -25,15 +25,14 @@ public class SiteService {
         this.favoriteRepository = favoriteRepository;
     }
 
-    public String saveSite(HttpSession httpSession, Site site) {
-        siteRepository.save(new Site(
+    public Site saveSite(HttpSession httpSession, Site site) {
+        return siteRepository.save(new Site(
                 site.getName(),
                 (long) httpSession.getAttribute("id"),
                 Calendar.getInstance().getTime().toString(),
                 Calendar.getInstance().getTime().toString(),
                 site.getTags()
         ));
-        return "redirect:/profile?id="+httpSession.getAttribute("id").toString();
     }
 
     public void saveExistSite(HttpSession httpSession, String source, long id) {

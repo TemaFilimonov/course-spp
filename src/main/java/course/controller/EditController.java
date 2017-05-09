@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 
-/**
- * Created by Nox on 06.10.2016.
- */
+
 @Controller
 @RequestMapping("/")
 public class EditController {

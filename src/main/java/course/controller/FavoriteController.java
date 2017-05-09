@@ -1,31 +1,28 @@
 package course.controller;
 
 import course.dao.FavoriteRepository;
-import course.dao.SiteRepository;
 import course.domain.Favorite;
 import course.domain.Site;
 import course.service.SiteService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Nox on 06.10.2016.
- */
 @Controller
 @RequestMapping("/")
 public class FavoriteController {
 
     private final SiteService siteService;
+
+    @Autowired
+    private FavoriteRepository favoriteRepository;
 
     @Autowired
     public FavoriteController(SiteService siteService) {
@@ -37,4 +34,8 @@ public class FavoriteController {
         return siteService.getFavorites(httpSession, id);
     }
 
+    @RequestMapping(value = "/favorite/add/{siteId}", method = RequestMethod.POST)
+    public @ResponseBody void addToFavorite(HttpSession httpSession, @PathVariable("siteId") long id) {
+        favoriteRepository.save(new Favorite(Long.valueOf(httpSession.getAttribute("id").toString()), id));
+    }
 }

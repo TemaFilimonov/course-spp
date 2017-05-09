@@ -6,50 +6,50 @@
     <link rel="stylesheet" href="css/mainStyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <body ng-app="favorite">
-    <div th:switch="${role}">
-        <span th:case="'user'">
-            <div th:replace="fragments/header ::'userHeader'"></div>
-        </span>
-        <span th:case="*">
-            <div th:replace="fragments/header ::'unsignedHeader'"></div>
-        </span>
-    </div>
-    <div class="container" ng-controller="favoriteCtrl">
-        <div class="col-md-12" ng-if="user.id == user.sessionId && user.id != null">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h4>User favorite:</h4></div>
-                <div class="panel-body">
-                    <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>Title</th>
-                            <th>Edit date</th>
-                            <th>Create date</th>
-                            <th>Management</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="item in site">
-                            <td>{{item.name}}</td>
-                            <td>{{item.editDate}}</td>
-                            <td>{{item.createDate}}</td>
-                            <td><a href="#" class="btn btn-danger center-block ">Delete from favorite</a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+<div th:switch="${role}">
+<span th:case="'user'">
+<div th:replace="fragments/header ::'userHeader'"></div>
+</span>
+    <span th:case="*">
+<div th:replace="fragments/header ::'unsignedHeader'"></div>
+</span>
+</div>
+<div class="container" ng-controller="favoriteCtrl">
+    <div class="col-md-12" ng-if="user.id == user.sessionId && user.id != null">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h4>User favorite:</h4></div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Edit date</th>
+                        <th>Create date</th>
+                        <th>Management</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="item in site">
+                        <td>{{item.name}}</td>
+                        <td>{{item.editDate}}</td>
+                        <td>{{item.createDate}}</td>
+                        <td><a href="#" class="btn btn-danger center-block ">Delete from favorite</a></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="col-md-12" ng-if="user.id != user.sessionId || user.id == null">
-            <img src="http://www.pyropuzzles.com/Images/Access%20Denied.png" height="460" width="640" class="center-block"/>
-        </div>
     </div>
+    <div class="col-md-12" ng-if="user.id != user.sessionId || user.id == null">
+        <img src="http://www.pyropuzzles.com/Images/Access%20Denied.png" height="460" width="640" class="center-block"/>
+    </div>
+</div>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
 <script src="js/favorite.js"></script>

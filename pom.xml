@@ -109,6 +109,19 @@
             <version>2.2.2</version>
             <scope>compile</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit</groupId>
+            <artifactId>junit5-engine</artifactId>
+            <version>5.0.0-ALPHA</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+
     </dependencies>
 
     <properties>

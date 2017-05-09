@@ -6,21 +6,21 @@
     <link rel="stylesheet" href="css/mainStyle.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <body ng-app="mainView">
 <div th:switch="${role}">
-    <span th:case="'user'">
-		<div th:replace="fragments/header ::'userHeader'"></div>
-    </span>
+<span th:case="'user'">
+<div th:replace="fragments/header ::'userHeader'"></div>
+</span>
     <span th:case="*">
-		<div th:replace="fragments/header ::'unsignedHeader'"></div>
-    </span>
+<div th:replace="fragments/header ::'unsignedHeader'"></div>
+</span>
 </div>
 <div class="container" ng-controller="mainCtrl">
     <div class="row">
         <div class="col-md-5">
-            <div class="panel panel-default" >
+            <div class="panel panel-default">
                 <div class="panel-heading"><h4>All Sites</h4></div>
                 <div class="panel-body">
                     <table class="table table-striped">
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="col-md-5">
-            <div class="panel panel-default" >
+            <div class="panel panel-default">
                 <div class="panel-heading"><h4>Last created</h4></div>
                 <div class="panel-body">
                     <table class="table table-striped">
@@ -62,7 +62,7 @@
             </div>
         </div>
         <div class="col-md-2">
-            <div class="panel panel-default" >
+            <div class="panel panel-default">
                 <div class="panel-heading"><h4>New users</h4></div>
                 <div class="panel-body">
                     <table class="table table-striped">
@@ -74,15 +74,14 @@
                         <tbody>
                         <tr ng-repeat="item in users  | reverse | limitTo:10">
                             <td><a ng-href="/profile?id={{item.id}}">{{item.name}}</a></td>
-
                         </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        </div>
     </div>
+</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

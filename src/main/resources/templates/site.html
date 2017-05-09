@@ -2,16 +2,6 @@
       xmlns:th="http://www.thymeleaf.org" xmlns:ng-src="http://www.w3.org/1999/xhtml">
 <html>
 
-<!--<head>
-    <title>User profile</title>
-    <link rel="stylesheet" href="css/mainStyle.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <script src="js/jquery-3.1.0.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/angular.js"></script>
-    <script src="js/angular-sanitize.js"></script>
-</head>-->
 <head>
     <title>User profile</title>
     <link rel="stylesheet" href="css/mainStyle.css">
@@ -23,51 +13,34 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="//code.angularjs.org/1.2.20/angular-sanitize.min.js"></script>
 </head>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <body ng-app="siteShow">
-
 <div th:switch="${role}">
-            <span th:case="'user'">
-		        <div th:replace="fragments/header ::'userHeader'"></div>
-            </span>
+<span th:case="'user'">
+<div th:replace="fragments/header ::'userHeader'"></div>
+</span>
     <span th:case="*">
-		        <div th:replace="fragments/header ::'unsignedHeader'"></div>
-            </span>
+<div th:replace="fragments/header ::'unsignedHeader'"></div>
+</span>
 </div>
-
-
-    <div ng-controller="siteCtrl">
-        <p ng-bind-html="site"></p>
-        <div class="container">
-            <div id="disqus_thread"></div>
-        </div>
-
+<div ng-controller="siteCtrl">
+    <p ng-bind-html="site"></p>
+    <div class="container">
+        <div id="disqus_thread"></div>
     </div>
-
-
-
+</div>
 <script>
-
-    /**
-     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables */
-    /*
-     var disqus_config = function () {
-     this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
-     this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-     };
-     */
-    (function() { // DON'T EDIT BELOW THIS LINE
+    (function () {
         var d = document, s = d.createElement('script');
         s.src = '//itra.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by
+    Disqus.</a></noscript>
 <script id="dsq-count-scr" src="//itra.disqus.com/count.js" async></script>
-    <script src="js/siteShow.js"></script>
+<script src="js/siteShow.js"></script>
 </body>
 </html>

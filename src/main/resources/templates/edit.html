@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      >
+>
 <html lang="en">
 <head>
     <title>Site maker</title>
@@ -19,60 +19,58 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-summernote/0.8.1/angular-summernote.js"></script>
     <script src="//code.angularjs.org/1.2.20/angular-sanitize.min.js"></script>
 </head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <body ng-app="dnd" ng-controller="editCtrl" data-spy="scroll" data-target="#myScrollspy" data-offset="15">
 <div th:switch="${role}">
-    <span th:case="'user'">
-		<div th:replace="fragments/header ::'userHeader'"></div>
-    </span>
+<span th:case="'user'">
+<div th:replace="fragments/header ::'userHeader'"></div>
+</span>
     <span th:case="*">
-		<div th:replace="fragments/header ::'unsignedHeader'"></div>
-    </span>
+<div th:replace="fragments/header ::'unsignedHeader'"></div>
+</span>
 </div>
 <div class="container">
     <div class="nestedDemo row">
-    <div class="col-xs-10 col-sm-10 col-md-10">
-        <div class="row">
-            <div ng-repeat="(zone, list) in models.dropzones" class="col-md-12">
-                <div class="dropzone box box-yellow">
-                    <h3>Dropzone</h3>
-                    <div ng-include="'list.html'"></div>
+        <div class="col-xs-10 col-sm-10 col-md-10">
+            <div class="row">
+                <div ng-repeat="(zone, list) in models.dropzones" class="col-md-12">
+                    <div class="dropzone box box-yellow">
+                        <h3>Dropzone</h3>
+                        <div ng-include="'list.html'"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div view-source="nested"></div>
-        <div ng-if="models.selected" class="box box-grey box-padding">
-            <h3>Selected</h3>
-            <strong>Type: </strong> {{models.selected.type}}<br>
-            <div id="output" type="text" ng-model="models.selected.code" summernote></div>
-            <!--<div class="btn-group" role="group" aria-label="Basic example">
-                <input type="button" class="btn btn-info" value="Clear" onclick="javascript:eraseText();">
-                <input type="button" class="btn btn-info" value="Img" onclick="javascript:addImg();">
+            <div view-source="nested"></div>
+            <div ng-if="models.selected" class="box box-grey box-padding">
+                <h3>Selected</h3>
+                <strong>Type: </strong> {{models.selected.type}}<br>
+                <div id="output" type="text" ng-model="models.selected.code" summernote></div>
             </div>
-            <textarea id='output'  type="text" ng-model="models.selected.code" class="form-control" style="resize: vertical; margin-top: 5px;  -ms-word-break: break-all; word-break: break-all;
-                                              -webkit-hyphens: auto; -moz-hyphens: auto; hyphens: auto;;" ></textarea>-->
+            <h2>Generated Model</h2>
+            <pre>{{modelAsJson}}</pre>
         </div>
-        <h2>Generated Model</h2>
-        <pre>{{modelAsJson}}</pre>
-    </div>
         <div class="col-xs-2 col-sm-2 col-md-2" id="myScrollspy">
             <ul class="affix" data-offset-top="-1" data-spy="affix" style="margin-right: 90%; padding-left: 0px">
-                <button  type="button" ng-click='savePage()' class="btn btn-success btn-block" style="margin-bottom: 15px;">Save page</button>
+                <button type="button" ng-click='savePage()' class="btn btn-success btn-block"
+                        style="margin-bottom: 15px;">Save page
+                </button>
                 <div class="toolbox box box-grey box-padding ">
                     <h3>New Elements</h3>
                     <ul>
                         <li ng-repeat="item in models.templates"
                             dnd-draggable="item"
                             dnd-effect-allowed="copy">
-                            <button type="button" class="btn btn-default btn-lg" disabled="disabled">{{item.type}}</button>
+                            <button type="button" class="btn btn-default btn-lg" disabled="disabled">{{item.type}}
+                            </button>
                         </li>
                     </ul>
                 </div>
                 <div class="trashcan box box-grey box-padding">
                     <h3>Trashcan</h3>
                     <ul dnd-list="[]">
-                        <li><img src="http://s1.iconbird.com/ico/2013/12/505/w450h4001385925290Delete.png" height="160px" width="160px"></li>
+                        <li><img src="http://s1.iconbird.com/ico/2013/12/505/w450h4001385925290Delete.png"
+                                 height="160px" width="160px"></li>
                     </ul>
                 </div>
             </ul>
@@ -102,8 +100,8 @@
         <div class="item"><p ng-bind-html="item.code"></p></div>
     </script>
 
-    </div>
-    </div>
+</div>
+</div>
 
 
 <script>
