@@ -18,9 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by Артем Константинович on 06.10.2016.
- */
 @Controller
 @RequestMapping("/")
 public class SiteController {

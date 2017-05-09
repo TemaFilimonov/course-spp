@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+ <title>Site maker</title>
+ <link rel="stylesheet" href="css/mainStyle.css">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+</head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<body ng-app="search">
+<div th:switch="${role}">
+<span th:case="'user'">
+<div th:replace="fragments/header ::'userHeader'"></div>
+</span>
+ <span th:case="*">
+<div th:replace="fragments/header ::'unsignedHeader'"></div>
+</span>
+</div>
+<div class="container" ng-controller="searchCtrl">
+ <div class="panel-heading"><h4>Search results by {{phrase}}</h4></div>
+ <div class="panel-body">
+  <table class="table table-striped">
+   <thead>
+   <tr>
+    <th>Title</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr ng-repeat="item in site">
+    <td><a ng-href="/site?site={{item.id}}">{{item.name}}</a></td>
+   </tr>
+   </tbody>
+  </table>
+ </div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="js/search.controller.js"></script>
+</body>
+</html>

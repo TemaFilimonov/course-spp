@@ -1,6 +1,3 @@
-/**
- * Created by Артем Константинович on 10.10.2016.
- */
 var App = angular.module('mainView', []);
 
 App.controller('mainCtrl',['$scope','$http','$location', function ($scope, $http, $location) {

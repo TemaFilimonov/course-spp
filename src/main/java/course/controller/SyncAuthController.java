@@ -44,4 +44,8 @@ public class SyncAuthController {
         return syncModelAndSessionService.sync("/profile", model, httpSession);
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String ViewSearchRole(Model model, HttpSession httpSession){
+        return syncModelAndSessionService.sync("/search", model, httpSession);
+    }
 }

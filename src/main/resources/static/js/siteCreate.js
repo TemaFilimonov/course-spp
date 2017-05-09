@@ -1,8 +1,3 @@
-/**
- * Created by Артем Константинович on 06.10.2016.
- */
-//noinspection JSAnnotator
-
 angular.module("siteCreate", ['ngSanitize'])
 
     .controller("creationCtrl", function($scope, $http) {

@@ -1,6 +1,7 @@
 package course.elasticsearch.domain;
 
 import course.domain.Site;
+import course.service.utils.ElasticDataCleanUtil;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -25,8 +26,9 @@ public class ElasticSite{
     private String siteId;
 
     public ElasticSite(Site site) {
+        this.id = String.valueOf(site.getId());
         this.name = site.getName();
-        this.source = site.getSource();
+        this.source = ElasticDataCleanUtil.clean(site.getSource());
         this.ownerId = String.valueOf(site.getOwnerId());
         this.siteId = String.valueOf(site.getId());
     }

@@ -6,16 +6,25 @@
 </head>
 <body>
     <div class="container" th:fragment="unsignedHeader">
+        <script>
+            function search() {
+                let phrase = window.document.getElementById('searchInput').value;
+                console.log(phrase);
+                if(phrase){
+                    window.location.replace('/search?phrase=' + phrase);
+                }
+                return false;
+            }
+        </script>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
 				<div class="navbar-header">
 				 	<a href="http://localhost:8080/" class="navbar-brand">Site creator</a>
 				</div>
                 <div class="collapse navbar-collapse">
-                    <form class="navbar-form navbar-left">
-						
+                    <form class="navbar-form navbar-left" onsubmit="return search()">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Search" id="searchInput">
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
@@ -38,15 +47,24 @@
     </div>
 
     <div class="container" th:fragment="userHeader">
+        <script>
+            function search() {
+                let phrase = window.document.getElementById('searchInput').value;
+                if(phrase){
+                    window.location.replace('/search?phrase=' + phrase);
+                }
+                return false;
+            }
+        </script>
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
 				<div class="navbar-header">
 				 	<a href="http://localhost:8080/" class="navbar-brand">Site creator</a>
 				</div>
                 <div class="collapse navbar-collapse">
-                    <form class="navbar-form navbar-left">
+                    <form class="navbar-form navbar-left" onsubmit="return search()">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="text" class="form-control" placeholder="Search" id="searchInput">
                         </div>
                         <button type="submit" class="btn btn-default">Submit</button>
                     </form>
@@ -67,7 +85,5 @@
             </div>
         </nav>
     </div>
-
-
 </body>
 </html>

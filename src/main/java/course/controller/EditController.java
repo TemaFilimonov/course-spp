@@ -21,7 +21,7 @@ public class EditController {
 
 
     @RequestMapping(value = "/edit/source/{id}", method = RequestMethod.POST)
-    public void Source(HttpSession httpSession, @RequestBody String source, @PathVariable long id) {
+    public @ResponseBody void Source(HttpSession httpSession, @RequestBody String source, @PathVariable long id) {
         siteService.saveExistSite(httpSession, source, id);
     }
 }

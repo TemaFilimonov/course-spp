@@ -1,10 +1,3 @@
-/**
- * Created by Артем Константинович on 06.10.2016.
- */
-//noinspection JSAnnotator
-/**
- * The controller doesn't do much more than setting the initial data model
- */
 angular.module("dnd", ['dndLists','ngSanitize','summernote'])
 
     .controller("editCtrl", function($scope, $http) {

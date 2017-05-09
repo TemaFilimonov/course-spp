@@ -6,10 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created by Артем Константинович on 06.10.2016.
- */
-
 @Repository
 public interface SiteRepository extends JpaRepository<Site, Long> {
     Site findById(long id);

@@ -4,6 +4,8 @@ import course.dao.FavoriteRepository;
 import course.dao.SiteRepository;
 import course.domain.Favorite;
 import course.domain.Site;
+import course.elasticsearch.dao.ElasticSiteRepository;
+import course.elasticsearch.domain.ElasticSite;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,8 @@ public class SiteService {
 
     private final SiteRepository siteRepository;
     private final FavoriteRepository favoriteRepository;
+    @Autowired
+    private ElasticSiteRepository elasticSiteRepository;
 
     @Autowired
     public SiteService(SiteRepository siteRepository, FavoriteRepository favoriteRepository) {
@@ -41,7 +45,8 @@ public class SiteService {
             site.setSource(source);
             Date data = Calendar.getInstance().getTime();
             site.setEditDate(data.toString());
-            siteRepository.save(site);
+            Site savedSite = siteRepository.save(site);
+            elasticSiteRepository.save(new ElasticSite(savedSite));
         }
     }
 
@@ -54,6 +59,10 @@ public class SiteService {
         }
         Collections.reverse(sites);
         return sites;
+    }
+
+    public Site getOneById(Long id) {
+        return siteRepository.findById(id);
     }
 
     public List<Site> getAll() {

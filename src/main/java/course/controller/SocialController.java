@@ -18,12 +18,8 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Артем Константинович on 30.09.2016.
- */
 @Controller
 @RequestMapping("/")
-
 public class SocialController {
 
     private Twitter twitter;
@@ -133,7 +129,4 @@ public class SocialController {
         sites = userRepository.findAllByOrderById();
         return sites;
     }
-
-
-
 }

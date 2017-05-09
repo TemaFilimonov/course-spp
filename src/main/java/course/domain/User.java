@@ -7,9 +7,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-/**
- * Created by Артем Константинович on 02.10.2016.
- */
 @Entity
 @Getter
 @Setter
