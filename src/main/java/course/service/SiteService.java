@@ -6,8 +6,11 @@ import course.domain.Favorite;
 import course.domain.Site;
 import course.elasticsearch.dao.ElasticSiteRepository;
 import course.elasticsearch.domain.ElasticSite;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.*;
@@ -20,23 +23,25 @@ public class SiteService {
 
     private final SiteRepository siteRepository;
     private final FavoriteRepository favoriteRepository;
-    @Autowired
-    private ElasticSiteRepository elasticSiteRepository;
+    private final ElasticSiteRepository elasticSiteRepository;
 
     @Autowired
-    public SiteService(SiteRepository siteRepository, FavoriteRepository favoriteRepository) {
+    public SiteService(SiteRepository siteRepository, FavoriteRepository favoriteRepository, ElasticSiteRepository elasticSiteRepository) {
         this.siteRepository = siteRepository;
         this.favoriteRepository = favoriteRepository;
+        this.elasticSiteRepository = elasticSiteRepository;
     }
 
     public Site saveSite(HttpSession httpSession, Site site) {
-        return siteRepository.save(new Site(
+        Site savedSite = siteRepository.save(new Site(
                 site.getName(),
                 (long) httpSession.getAttribute("id"),
                 Calendar.getInstance().getTime().toString(),
                 Calendar.getInstance().getTime().toString(),
                 site.getTags()
         ));
+        elasticSiteRepository.save(new ElasticSite(savedSite));
+        return savedSite;
     }
 
     public void saveExistSite(HttpSession httpSession, String source, long id) {
@@ -68,4 +73,54 @@ public class SiteService {
     public List<Site> getAll() {
         return siteRepository.findAll();
     }
+
+    public List<Site> getLastCreatedSites(int count) {
+        List<Site> page = new ArrayList<Site>();
+        List<Site> sites = siteRepository.findAllByOrderByCreateDate();
+        for(int i = 0;i<count;i++) {
+            if (i >= sites.size()) {
+                break;
+            }
+            else{
+                page.add(sites.get(i));
+            }
+        }
+        return page;
+    }
+
+    public List<Site> getSitesSortedByName(int count) {
+        List<Site> sites;
+        List<Site> page = new ArrayList<Site>();
+        sites = siteRepository.findAllByOrderByName();
+        for(int j = 0;j<count;j++) {
+            if (j >= sites.size()) {
+                break;
+            }
+            else{
+                page.add(sites.get(j));
+            }
+        }
+        return page;
+    }
+
+    public String delete(HttpSession httpSession, long id) {
+        if ((long)httpSession.getAttribute("id") == siteRepository.findById(id).getOwnerId()) {
+            elasticSiteRepository.deleteElasticSiteById(id);
+            siteRepository.delete(id);
+        }
+        return "redirect:/profile?id="+httpSession.getAttribute("id").toString();
+    }
+
+    public String getSiteSourceById(long id) {
+        return Optional.ofNullable(siteRepository.findById(id))
+                .map(Site::getSource)
+                .orElse(StringUtils.EMPTY);
+
+    }
+
+    public List<Site> getSitesByOwnerId( long id) {
+        return siteRepository.findByOwnerId(id);
+    }
+
+
 }

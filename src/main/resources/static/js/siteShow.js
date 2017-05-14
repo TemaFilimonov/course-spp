@@ -1,5 +1,5 @@
 'use strict';
-var App = angular.module('siteShow', ['ngSanitize']);
+let App = angular.module('siteShow', ['ngSanitize']);
 
 App.controller('siteCtrl',['$scope','$http','$location','$sce', function ($scope, $http, $location, $sce) {
     $scope.site = [];

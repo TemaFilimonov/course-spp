@@ -16,36 +16,40 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/")
 public class SyncAuthController {
 
+    private final SyncModelAndSessionService syncModelAndSessionService;
+
     @Autowired
-    private SyncModelAndSessionService syncModelAndSessionService;
+    public SyncAuthController(SyncModelAndSessionService syncModelAndSessionService) {
+        this.syncModelAndSessionService = syncModelAndSessionService;
+    }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String ViewCreateRole(Model model, HttpSession httpSession){
+    public String ViewCreateRole(Model model, HttpSession httpSession) {
         return syncModelAndSessionService.sync("create", model, httpSession);
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
-    public String ViewEditRole(Model model, HttpSession httpSession){
+    public String ViewEditRole(Model model, HttpSession httpSession) {
         return syncModelAndSessionService.sync("edit", model, httpSession);
     }
 
     @RequestMapping(value = "/favorite", method = RequestMethod.GET)
-    public String ViewFavoriteRole(Model model, HttpSession httpSession){
+    public String ViewFavoriteRole(Model model, HttpSession httpSession) {
         return syncModelAndSessionService.sync("/favorite", model, httpSession);
     }
 
     @RequestMapping(value = "/site", method = RequestMethod.GET)
-    public String siteRole(Model model, HttpSession httpSession){
+    public String siteRole(Model model, HttpSession httpSession) {
         return syncModelAndSessionService.sync("/site", model, httpSession);
     }
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public String ViewProfileRole(Model model, HttpSession httpSession){
+    public String ViewProfileRole(Model model, HttpSession httpSession) {
         return syncModelAndSessionService.sync("/profile", model, httpSession);
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String ViewSearchRole(Model model, HttpSession httpSession){
+    public String ViewSearchRole(Model model, HttpSession httpSession) {
         return syncModelAndSessionService.sync("/search", model, httpSession);
     }
 }

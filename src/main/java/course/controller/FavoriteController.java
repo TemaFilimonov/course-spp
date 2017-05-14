@@ -4,7 +4,6 @@ import course.dao.FavoriteRepository;
 import course.domain.Favorite;
 import course.domain.Site;
 import course.service.SiteService;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,12 +20,12 @@ public class FavoriteController {
 
     private final SiteService siteService;
 
-    @Autowired
-    private FavoriteRepository favoriteRepository;
+    private final FavoriteRepository favoriteRepository;
 
     @Autowired
-    public FavoriteController(SiteService siteService) {
+    public FavoriteController(SiteService siteService, FavoriteRepository favoriteRepository) {
         this.siteService = siteService;
+        this.favoriteRepository = favoriteRepository;
     }
 
     @RequestMapping(value = "/user/favorite/{id}", method = RequestMethod.GET)

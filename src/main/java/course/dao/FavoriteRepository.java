@@ -1,7 +1,6 @@
 package course.dao;
 
 import course.domain.Favorite;
-import course.domain.Site;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

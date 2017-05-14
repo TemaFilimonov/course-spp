@@ -8,4 +8,5 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
  */
 public interface ElasticSiteRepository extends ElasticsearchRepository<ElasticSite, String> {
 
+    void deleteElasticSiteById(Long id);
 }

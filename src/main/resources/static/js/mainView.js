@@ -1,6 +1,6 @@
-var App = angular.module('mainView', []);
+let App = angular.module('mainView', []);
 
-App.controller('mainCtrl',['$scope','$http','$location', function ($scope, $http, $location) {
+App.controller('mainCtrl',['$scope','$http','$location', function ($scope, $http) {
     $scope.siteByCreation = [];
     $scope.siteByAlhp = [];
     $scope.users = [];

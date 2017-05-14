@@ -21,7 +21,7 @@ public class Site {
     @Column(name = "ID")
     private long id;
 
-    public Site(String name, long ownerId, String createDate, String editDate, String tags){
+    public Site(String name, long ownerId, String createDate, String editDate, String tags) {
         this.name = name;
         this.ownerId = ownerId;
         this.createDate = createDate;
@@ -30,7 +30,7 @@ public class Site {
         this.tags = tags;
 
     }
-    public Site(String name, String tags){
+    public Site(String name, String tags) {
         this.name = name;
         this.ownerId = 0;
         this.createDate = null;
@@ -39,7 +39,7 @@ public class Site {
         this.tags = tags;
 
     }
-    public Site(String name, long ownerId, String createDate, String editDate, String source, String tags){
+    public Site(String name, long ownerId, String createDate, String editDate, String source, String tags) {
         this.name = name;
         this.ownerId = ownerId;
         this.createDate = createDate;

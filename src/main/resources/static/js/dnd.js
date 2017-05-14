@@ -25,7 +25,7 @@ angular.module("dnd", ['dndLists','ngSanitize','summernote'])
         }, true);
 
         $scope.savePage = function (action) {
-            var source = $scope.modelAsJson;
+            let source = $scope.modelAsJson;
             $http.post("edit/source/"+ window.location.search.slice(6), source, action)};
 
     }

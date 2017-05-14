@@ -6,7 +6,8 @@
  <link rel="stylesheet" href="css/mainStyle.css">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 </head>
-<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Language" content="ru">
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <body ng-app="search">
 <div th:switch="${role}">
@@ -18,7 +19,7 @@
 </span>
 </div>
 <div class="container" ng-controller="searchCtrl">
- <div class="panel-heading"><h4>Search results by {{phrase}}</h4></div>
+ <div class="panel-heading"><h4>Search results by "{{phrase}}"</h4></div>
  <div class="panel-body">
   <table class="table table-striped">
    <thead>

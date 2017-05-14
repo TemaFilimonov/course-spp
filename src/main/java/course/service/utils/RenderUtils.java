@@ -1,6 +1,6 @@
 package course.service.utils;
 
-import course.domain.Render;
+import course.dto.Render;
 
 /**
  * Created by admin on 05.05.2017.

@@ -1,9 +1,9 @@
 'use strict';
 
 
-var App = angular.module('profile', []);
+let App = angular.module('profile', []);
 
-App.controller('profileUserCtrl',['$scope','$http','$location', function ($scope, $http, $location) {
+App.controller('profileUserCtrl',['$scope','$http', function ($scope, $http) {
   $scope.user = [];
   $scope.site = [];
   $scope.favorites = [];
@@ -24,7 +24,7 @@ App.controller('profileUserCtrl',['$scope','$http','$location', function ($scope
   }
 }]);
 
-App.controller('favoriteCtrl',['$scope','$http','$location', function ($scope, $http, $location) {
+App.controller('favoriteCtrl',['$scope','$http','$location', function ($scope, $http) {
   $scope.user = [];
   $scope.site = [];
 

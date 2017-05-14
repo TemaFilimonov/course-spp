@@ -1,6 +1,6 @@
 package course.controller;
 
-import course.domain.UserProfile;
+import course.dto.UserProfile;
 import course.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,11 +13,15 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user")
 public class ProfileController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public ProfileController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/info/{id}", method = RequestMethod.GET)
-    public @ResponseBody UserProfile ViewProfile(HttpSession httpSession, @PathVariable("id") long id){
+    public @ResponseBody UserProfile ViewProfile(HttpSession httpSession, @PathVariable("id") long id) {
         return userService.getUserProfile(httpSession, id);
     }
 

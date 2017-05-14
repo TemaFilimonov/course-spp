@@ -16,8 +16,12 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/")
 public class CreateController {
 
+    private final SiteService siteService;
+
     @Autowired
-    private SiteService siteService;
+    public CreateController(SiteService siteService) {
+        this.siteService = siteService;
+    }
 
     @RequestMapping(value = "save/site", method = RequestMethod.POST)
     public @ResponseBody Site createSite(HttpSession httpSession, @RequestBody Site site) {

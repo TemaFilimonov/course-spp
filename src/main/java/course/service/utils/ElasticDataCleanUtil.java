@@ -26,6 +26,7 @@ public class ElasticDataCleanUtil {
         sourceString = sourceString.replace("]}","");
         sourceString = sourceString.replace("\\n","");
         sourceString = sourceString.replace("\\","");
+        sourceString = sourceString.replaceAll("<(/|)p>", " ");
         return sourceString;
     }
         

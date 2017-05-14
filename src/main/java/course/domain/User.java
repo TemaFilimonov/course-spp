@@ -18,7 +18,7 @@ public class User {
     @Column(name = "ID")
     private long id;
 
-    public User(String name, String userUrl){
+    public User(String name, String userUrl) {
         this.name = name;
         this.userUrl = userUrl;
         this.role = "user";

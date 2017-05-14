@@ -12,7 +12,7 @@ angular.module("siteCreate", ['ngSanitize'])
                     source: null,
                     tags: $scope.src.tags
                 } ;
-                $http.post("save/site/", $scope.site , action).then(function (response) {
+                $http.post("save/site/", $scope.site, action).then(function (response) {
                     if(response.status === 200) {
                         window.location.replace('/edit?site=' + response.data.id);
                     }

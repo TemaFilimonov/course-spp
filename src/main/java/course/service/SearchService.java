@@ -23,14 +23,18 @@ import static org.elasticsearch.index.query.QueryBuilders.multiMatchQuery;
 @Service
 public class SearchService {
 
-    @Autowired
-    private EsConfig esConfig;
+    private final EsConfig esConfig;
 
-    @Autowired
-    private SiteService siteService;
+    private final SiteService siteService;
 
     @Value("${elasticsearch.index.name}")
     private String indexName;
+
+    @Autowired
+    public SearchService(EsConfig esConfig, SiteService siteService) {
+        this.esConfig = esConfig;
+        this.siteService = siteService;
+    }
 
     public
     List<Site> getSitesBySearchPhrase(String searchPhrase) throws Exception {

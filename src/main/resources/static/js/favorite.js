@@ -1,7 +1,7 @@
 'use strict';
 
 
-var App = angular.module('favorite', []);
+let App = angular.module('favorite', []);
 
 App.controller('favoriteCtrl',['$scope','$http','$location', function ($scope, $http, $location) {
   $scope.user = [];
